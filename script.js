@@ -5,36 +5,38 @@ const todoList = document.getElementById('todo-list');
 function addTask() {
     const taskValue = input.value.trim();
     
-    if (taskValue === "") {
-        alert("Please enter a task!");
-        return;
-    }
+    
+    if (!taskValue) return; 
 
-    //list item
+    
     const li = document.createElement('li');
+    li.className = 'todo-item'; 
+    
     li.innerHTML = `
         <span class="task-text">${taskValue}</span>
-        <button class="delete-btn">Delete</button>
+        <button class="delete-btn" aria-label="Delete task">Delete</button>
     `;
 
-    //text to toggle completion
-    li.querySelector('.task-text').addEventListener('click', function() {
-        this.classList.toggle('completed');
+   
+    const taskText = li.querySelector('.task-text');
+    taskText.addEventListener('click', () => {
+        taskText.classList.toggle('completed');
     });
 
-    // Delete button logic
-    li.querySelector('.delete-btn').addEventListener('click', function() {
+    
+    li.querySelector('.delete-btn').addEventListener('click', () => {
         li.remove();
     });
 
+    
     todoList.appendChild(li);
-    input.value = ""; // Clear input
+    input.value = "";
+    input.focus(); 
 }
 
-// Trigger on button click
+
 addBtn.addEventListener('click', addTask);
 
-// Trigger on 'Enter' key
-input.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') addTask();
+input.addEventListener('keydown', (e) => { 
+    if (e.key === 'Enter') addTask(); 
 });
