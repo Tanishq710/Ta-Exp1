@@ -6,7 +6,8 @@ A simple, functional To-Do List application built as a classic introductory proj
 
 The application uses the following custom icon for its title bar branding (favicon):
 
-![Application Logo](logo.png)
+![Application Logo](/assets/logo.jpg)
+
 
 ## Tech Stack
 
